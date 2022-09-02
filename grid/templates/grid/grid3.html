@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!-- Estilos | Styles -->
+{% block styles %}
+
+{% endblock %}
+
+{% block title %}Basic Grid{% endblock %}
+
+{% block content %}
+{% load jqgrid %}
+{% jqgrid grid %}
+{% endblock %}
+
+<!-- Javascript | JS -->
+{% block jscript %}
+    <!-- jQuery Scripts -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <!-- djqGrid Scripts -->
+    <script type="text/javascript" src="{% static 'js/djqgrid_utils.js' %}"></script>
+{% endblock %}

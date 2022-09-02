@@ -6,5 +6,8 @@ class HomePageView(TemplateView):
     template_name = "core/home.html"
 
     def get(self,request, *args, **kwargs):
-        kw = {'title': "Django djqGrid example"}
+        kw = {
+            'title': "Django djqGrid example",
+            'theme': 'core/themes/redmond/jquery-ui.css'
+        }
         return render(request, self.template_name, kw)

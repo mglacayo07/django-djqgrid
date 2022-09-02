@@ -13,10 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
+from djqgrid.urls import urlpatterns as djqgrid_patterns
 
+from grid.urls import grid_patterns
 urlpatterns = [
-    path('', include('core.urls')),
     path('admin/', admin.site.urls),
+    path('', include('core.urls')),
+    path('grids/',include(grid_patterns)),
+    # Url paquete djqgrid
+    #path('grid/', include(djqgrid_patterns)),
+    path(r'^grid_json/$', include(djqgrid_patterns)),
 ]
+#urlpatterns += patterns('', path(r^'grid_json/', include (djqgrid_patterns))
+

@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}{% endblock %}</title>
-    {% load static %}
-    <!-- Fuentes | Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-    <!-- Estilos | Styles -->
-    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
-    {% block styles %}{% endblock %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>{% block title %}{% endblock %}</title>
+      {% load static %}
+
+      <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+      <script type="text/ecmascript" src="{% static 'grid/jquery.jqGrid-4.4.3/js/jquery-1.7.2.min.js' %}"></script>
+      <script src="{% static 'grid/jquery-ui-1.13.2/jquery-ui.min.js' %}" type="text/javascript"></script>
+      <link rel="stylesheet" type="text/css" media="screen" href="{% static theme %}" />
+      <link rel="stylesheet" type="text/css" media="screen" href="{% static 'grid/ui/ui.jqgrid.css' %}" />
+
+      <script src="{% static 'grid/jquery.jqGrid-4.4.3/js/i18n/grid.locale-es.js' %}" type="text/javascript"></script>
+      <script src="{% static 'grid/jquery.jqGrid-4.4.3/js/jquery.jqGrid.min.js' %}" type="text/javascript"></script>
+      <script src="{% static 'grid/jquery.jqGrid-4.4.3/js/jquery.jqGrid.src.js' %}" type="text/javascript"></script>
+
+      <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+      <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+      <script src="{% static 'core/js/main.js' %}"></script>
+
   </head>
   <body>
       <!-- Navegación | Menu -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#">Playground</a>
+          <a class="navbar-brand" href="/">Playground</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="ned">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Grid</a>
+                <a class="nav-link" href="{% url 'grid:basic' %}">Grid</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'grid:basic2' %}">Grid2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'grid:basic3' %}">Grid3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'grid:basic4' %}">Grid4</a>
               </li>
             </ul>
             <ul class="navbar-nav">
@@ -78,9 +96,8 @@
           </div>
       </footer>
       <!-- Javascript | JS -->
-      <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-      <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-      <script src="{% static 'core/js/main.js' %}"></script>
-      {% block jscript %}{% endblock %}
+
+
+
   </body>
 </html>

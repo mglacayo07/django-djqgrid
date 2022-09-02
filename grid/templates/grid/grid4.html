@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Basic Grid{% endblock %}
+
+{% block content %}
+
+    <table id="jqGrid"></table>
+    <div id="jqGrid_pager"></div>
+
+    <script>
+        $(window).on("resize", function () {
+            console.log("CAMBIANDOOO");
+        });
+        $(document).ready(function () {
+            var jqgrid_name = "#jqGrid";
+            var jgrid_pager = "#jqGrid_pager";
+            var jgrid = jQuery(jqgrid_name);
+
+            jgrid.jqGrid({
+                url: "{% url 'grid:grid_handler' %}",
+                mtype: 'GET',
+                datatype: 'json',
+                colModel: [
+                {
+                    name: 'id',
+                    label: 'id',
+                    index: 'id',
+                    align: 'center',
+                    key:true
+                }, {
+                    name: 'name',
+                    label: 'Nombre',
+                    index: 'name',
+                    hidden: false
+                }],
+                sortname: 'id',
+                loadonce: true,
+                viewrecords: true,
+                autowidth: true,
+                height: 250,
+                rowNum: 16,
+                rowList: [16,50,100],
+                sortorder: "desc",
+                rownumbers: true,
+            });
+            jgrid.navGrid(jgrid_pager,{edit:false,add:false,del:false, search:true,
+                searchtitle:'Buscar',searchcaption:'Buscar'}, {}, {}, {}, {});
+            jgrid.jqGrid('navGrid','#ptoolbar',{del:false,add:false,edit:false,search:false});
+            jgrid.jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
+        });
+    </script>
+{% endblock %}

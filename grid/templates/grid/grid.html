@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!-- Estilos | Styles -->
+{% block styles %}
+
+{% endblock %}
+
+{% block title %}Basic Grid{% endblock %}
+
+{% block content %}
+    {% load jqgrid %}
+    {% jqgrid grid %}
+
+    <table id="grid"></table>
+    <div id="pager"></div>
+    <script type="text/javascript">
+        $(function() {
+            $('#grid').jqGrid({ "datatype": "json",
+                "mtype": "get",
+                "height": "300px",
+                "autowidth": true,
+                "multiselect":true,
+                "rowNum": 20,
+                "colNames": [ "Name", "Height", "Description" ],
+                "colModel": [
+                    { "name": "name" },
+                    { "name": "height", "align": "right"},
+                    { "name": "description",  }
+                ],
+                "url": "/%5Egrid_json/$query/(%3FP1502647226%5Cw+)$?",
+                "pager": "#pager"
+            });
+        });
+    </script>
+
+    <div id="grid-div">
+    </div>
+{% endblock %}
+
+<!-- Javascript | JS -->
+{% block jscript %}
+    <!-- jQuery Scripts -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <!-- djqGrid Scripts -->
+    <script type="text/javascript" src="{% static 'js/djqgrid_utils.js' %}"></script>
+{% endblock %}
